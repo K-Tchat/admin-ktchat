@@ -18,13 +18,17 @@ import {
 } from "@/components/ui/tooltip";
 
 import {
+  Ban,
   CheckCheck,
   CircleOff,
+  CircleSlash,
   Eye,
+  Folder,
   InfoIcon,
   Link,
   LogIn,
   Map,
+  MessageSquare,
   Send,
   SendIcon,
   Wifi,
@@ -35,7 +39,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 export const Dashboard: React.FC = () => {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full pb-5">
       <TopBar />
       <div className="flex h-full justify-between overflow-scroll p-1">
         <LeftBar />
@@ -47,6 +51,7 @@ export const Dashboard: React.FC = () => {
           <ChartComp />
           <span>Suivi des demandes spécifiques :</span>
           <RequestStats />
+          <ActionsStats />
         </div>
         <ProfilBar />
       </div>
@@ -477,5 +482,54 @@ const RequestStats = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const ActionsStats = () => {
+  return (
+    <div className="bg-white w-full rounded-lg flex flex-col items-center justify-between gap-10 p-10 relative">
+      <span>Rapport trafic sur la plateforme :</span>
+      <div className="flex justify-between gap-5">
+        <div className="bg-[#eef1fc] w-1/4  rounded-lg p-4 flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center bg-[#d6defa] rounded-full p-3">
+            <MessageSquare size={20} />
+          </div>
+          <span className=" underline">1</span>
+          <span className="text-xs text-center">
+            Validation de comptes modérateurs
+          </span>
+        </div>
+        <div className="bg-[#eef1fc] w-1/4 rounded-lg p-4 flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center bg-[#d6defa] rounded-full p-3">
+            <Folder size={20} />
+          </div>
+          <span className=" underline">5</span>
+          <span className="text-xs text-center">
+            Demande de recours accepté{" "}
+          </span>
+        </div>{" "}
+        <div className="bg-[#eef1fc] w-1/4 rounded-lg p-4 flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center bg-[#d6defa] rounded-full p-3">
+            <CircleSlash size={20} />
+          </div>
+          <span className=" underline">10</span>
+          <span className="text-xs text-center">
+            Modération de création de salon privé
+          </span>
+        </div>
+        <div className="bg-[#eef1fc]  w-1/4 rounded-lg p-4 flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center bg-[#d6defa] rounded-full p-3">
+            <Ban size={20} />
+          </div>
+          <span className=" underline">16</span>
+          <span className="text-xs text-center">
+            Bannissement 1ᵉʳ degré suite à un signalemen
+          </span>
+        </div>
+      </div>
+      <span className="text-md font-bold">N'oublie pas de traiter vos demandes et de valider les actions en cours</span>
+
+    </div>
+    
   );
 };
